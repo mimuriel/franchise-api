@@ -9,11 +9,11 @@ import reactor.core.publisher.Mono;
 public class CreateFranchiseUseCase {
     private final FranchiseRepository repository;
 
-    public CreateFranchiseUseCase(FranchiseRepository repository){
+    public CreateFranchiseUseCase(FranchiseRepository repository) {
         this.repository = repository;
     }
 
     public Mono<Franchise> execute(Franchise franchise) {
-        return  repository.save(franchise);
+        return repository.save(franchise);
     }
 }
