@@ -23,19 +23,25 @@ public class FranchiseController {
     private final GetTopProductsUseCase getTopProductsUseCase;
     private final UpdateFranchiseUseCase updateFranchiseUseCase;
     private final UpdateBranchUseCase updateBranchUseCase;
+    private final GetAllFranchisesUseCase getAllFranchisesUseCase;
+    private final DeleteFranchiseUseCase deleteFranchiseUseCase;
 
     public FranchiseController(
             CreateFranchiseUseCase createFranchiseUseCase,
             CreateBranchUseCase createBranchUseCase,
             GetTopProductsUseCase getTopProductsUseCase,
             UpdateFranchiseUseCase updateFranchiseUseCase,
-            UpdateBranchUseCase updateBranchUseCase
+            UpdateBranchUseCase updateBranchUseCase,
+            GetAllFranchisesUseCase getAllFranchisesUseCase,
+            DeleteFranchiseUseCase deleteFranchiseUseCase
     ) {
         this.createFranchiseUseCase = createFranchiseUseCase;
         this.createBranchUseCase = createBranchUseCase;
         this.getTopProductsUseCase = getTopProductsUseCase;
         this.updateFranchiseUseCase = updateFranchiseUseCase;
         this.updateBranchUseCase = updateBranchUseCase;
+        this.getAllFranchisesUseCase = getAllFranchisesUseCase;
+        this.deleteFranchiseUseCase = deleteFranchiseUseCase;
     }
 
     @PostMapping
@@ -46,6 +52,19 @@ public class FranchiseController {
 
         return createFranchiseUseCase.execute(franchise)
                 .map(ResponseEntity::ok);
+    }
+
+    @GetMapping
+    public Flux<Franchise> getAll() {
+        return getAllFranchisesUseCase.execute();
+    }
+
+    @DeleteMapping("/{franchiseId}")
+    public Mono<ResponseEntity<Void>> deleteFranchise(
+            @PathVariable String franchiseId
+    ) {
+        return deleteFranchiseUseCase.execute(franchiseId)
+                .thenReturn(ResponseEntity.noContent().build());
     }
 
     @PatchMapping("/{franchiseId}/name")
