@@ -139,7 +139,7 @@ Para permitir la comunicación bidireccional entre el cliente (Ionic) y el servi
 Entorno de Desarrollo Local
 Por defecto, la API está configurada para aceptar peticiones desde el entorno estándar de desarrollo de Ionic:
 ```
-config.addAllowedOrigin("http://localhost:8100");
+config.addAllowedOriginPattern("http://localhost:*");
 ```
 #### Pruebas en Dispositivos Móviles (Red Local)
 Para realizar pruebas de integración en dispositivos físicos o emuladores que se encuentren en la misma red local (LAN), es necesario habilitar el acceso desde la IP del equipo host.
@@ -150,7 +150,7 @@ Configurar el origen: En franchise-api\src\main\java\com\franchise\api\config\Co
 
 // Reemplazar con la dirección obtenida, ej: 192.168.1.15
 ```
-config.addAllowedOrigin("http://<TU_IP_LOCAL>:8100");
+config.addAllowedOriginPattern("http://IP local:*");
 ```
 
 ## Instalación del repositorio
