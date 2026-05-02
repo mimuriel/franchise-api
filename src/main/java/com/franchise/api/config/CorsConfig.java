@@ -13,8 +13,9 @@ public class CorsConfig {
     public CorsWebFilter corsWebFilter() {
         CorsConfiguration config = new CorsConfiguration();
 
-        config.addAllowedOrigin("http://localhost:8100");
-        //config.addAllowedOrigin("IP local:8100"); Si deseas probar la app en un celular conectado a la misma red
+        config.addAllowedOriginPattern("http://localhost:*");
+        //config.addAllowedOriginPattern("http://IP local:*");
+
         config.addAllowedMethod("*");
         config.addAllowedHeader("*");
 
