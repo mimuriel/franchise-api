@@ -164,6 +164,9 @@ Ingresar al directorio del proyecto:
 ```bash
 cd franchise-api
 ```
+
+La rama `main` contiene la versión final y estable de la aplicación.
+
 ## Ejecución con Docker
 
 Construir y levantar los servicios:
